@@ -25,7 +25,7 @@ export default async function Categories(props: CategoryPageProps) {
           <Grid container spacing={2}>
             {posts.items.map((post) => {
               return (
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={6} key={post.fields.slug}>
                   <BlogPostSummaryCard key={post.fields.slug} post={post} />
                 </Grid>
               );
