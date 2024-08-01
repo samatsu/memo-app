@@ -7,6 +7,8 @@ import HeaderAppBar from "@/components/HeaderAppBar";
 import Footer from "@/components/Footer";
 import Container from "@mui/material/Container";
 
+export const revalidate = 600;
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
