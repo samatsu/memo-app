@@ -6,14 +6,14 @@ import Container from "@mui/material/Container";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
-import Main from "@/components/unused/Main";
+import Main from "@/components/Main";
 import Header from "@/components/unused/Header";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import HeroImageBanner from "@/components/HeroImageBanner";
 import FeaturedPost from "@/components/FeaturedPost";
 import HeaderAppBar from "@/components/HeaderAppBar";
-import LatestPost from "@/components/unused/LatestPost";
+import LatestPost from "@/components/LatestPost";
 import Divider from "@mui/material/Divider";
 import LatestPostList from "@/components/LatestPostList";
 
@@ -94,14 +94,21 @@ const posts: PostType[] = [
 ];
 
 const sidebar = {
-  title: "お知らせ",
+  title: "About",
   description:
-    "このサイトは作成途中です。なにかありましたらのページからお知らせください。",
-  categories: [
-    { title: "Uncategorized", url: "/categories/uncategorized" },
-    { title: "Windows", url: "/categories/windows" },
-    { title: "Power Automate", url: "/categories/power automate" },
-    { title: "OutSystems", url: "/categories/outsystems" },
+    "Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.",
+  archives: [
+    { title: "March 2020", url: "#" },
+    { title: "February 2020", url: "#" },
+    { title: "January 2020", url: "#" },
+    { title: "November 1999", url: "#" },
+    { title: "October 1999", url: "#" },
+    { title: "September 1999", url: "#" },
+    { title: "August 1999", url: "#" },
+    { title: "July 1999", url: "#" },
+    { title: "June 1999", url: "#" },
+    { title: "May 1999", url: "#" },
+    { title: "April 1999", url: "#" },
   ],
   social: [
     { name: "GitHub", icon: GitHubIcon },
@@ -112,35 +119,44 @@ const sidebar = {
 
 export default async function Home() {
   return (
-    <main>
-      <HeroImageBanner data={mainFeaturedPost} />
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={8}>
-          {/* @ts-expect-error Server Component */}
-          <LatestPostList />
-          {/* <Typography variant="h6" gutterBottom>
+    <>
+      <HeaderAppBar />
+      <Container maxWidth="lg">
+        <main>
+          <HeroImageBanner data={mainFeaturedPost} />
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={8}>
+              {/* @ts-expect-error Server Component */}
+              <LatestPostList />
+              {/* <Typography variant="h6" gutterBottom>
                 Latest Posts
               </Typography>
               <Divider />
               {featuredPosts.map((post) => (
                 <LatestPost key={post.title} post={post} />
               ))} */}
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Sidebar
-            title={sidebar.title}
-            description={sidebar.description}
-            categories={sidebar.categories}
-            social={sidebar.social}
-          />
-        </Grid>
-      </Grid>
-      {/* <Grid container spacing={4}>
+            </Grid>
+            <Grid item xs={12} md={4}>
+              <Sidebar
+                title={sidebar.title}
+                description={sidebar.description}
+                archives={sidebar.archives}
+                social={sidebar.social}
+              />
+            </Grid>
+          </Grid>
+          {/* <Grid container spacing={4}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
             ))}
           </Grid> */}
-    </main>
+        </main>
+      </Container>
+      <Footer
+        title="Footer"
+        description="Something here to give the footer a purpose!"
+      />
+    </>
   );
 }
 // export default function Home() {
