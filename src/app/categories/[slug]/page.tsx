@@ -1,5 +1,6 @@
 import { getBlogEntriesByCategory } from "@/lib/blogPostClient";
 import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import BlogPostSummaryCard from "@/components/BlogPostSummaryCard";
@@ -21,10 +22,10 @@ export default async function Categories(props: CategoryPageProps) {
       <Divider />
       <Grid container spacing={3}>
         <Grid item xs={12} md={8}>
-          <Grid container spacing={4}>
+          <Grid container spacing={2}>
             {posts.items.map((post) => {
               return (
-                <Grid item xs={12} md={6} key={post.fields.slug}>
+                <Grid item xs={12} md={6}>
                   <BlogPostSummaryCard key={post.fields.slug} post={post} />
                 </Grid>
               );
