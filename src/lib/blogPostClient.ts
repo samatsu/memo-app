@@ -38,6 +38,7 @@ export const getBlogEntries = async (skip = 0, limit = 25) => {
 export const getBlogEntryBySlug = async (slug: string) => {
   const posts = await client.getEntries<BlogPostSkelton>({
     content_type: "blogPost",
+    // @ts-ignore
     "fields.slug[match]": slug,
     limit: 1,
   });
@@ -47,6 +48,7 @@ export const getBlogEntryBySlug = async (slug: string) => {
 export const getBlogEntriesByCategory = async (category: string) => {
   const posts = await client.getEntries<BlogPostSkelton>({
     content_type: "blogPost",
+    // @ts-ignore
     "fields.category[match]": category,
   });
   return posts;

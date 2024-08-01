@@ -1,20 +1,9 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import Container from "@mui/material/Container";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
-import Main from "@/components/unused/Main";
-import Header from "@/components/unused/Header";
-import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import HeroImageBanner from "@/components/HeroImageBanner";
-import FeaturedPost from "@/components/FeaturedPost";
-import HeaderAppBar from "@/components/HeaderAppBar";
-import LatestPost from "@/components/unused/LatestPost";
-import Divider from "@mui/material/Divider";
 import LatestPostList from "@/components/LatestPostList";
 
 const sections = [
@@ -116,7 +105,6 @@ export default async function Home() {
       <HeroImageBanner data={mainFeaturedPost} />
       <Grid container spacing={3}>
         <Grid item xs={12} md={8}>
-          {/* @ts-expect-error Server Component */}
           <LatestPostList />
           {/* <Typography variant="h6" gutterBottom>
                 Latest Posts
