@@ -14,6 +14,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import SearchBox from "./SearchBox";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+import { Suspense } from "react";
 
 const pages = ["Articles", "Contact"];
 
@@ -118,7 +119,9 @@ export default function ResponsiveAppBar() {
               </Button>
             ))}
           </Box>
-          <SearchBox />
+          <Suspense>
+            <SearchBox />
+          </Suspense>
         </Toolbar>
       </Container>
     </AppBar>

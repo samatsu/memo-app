@@ -1,4 +1,7 @@
-import { getBlogEntriesByCategory } from "@/lib/blogPostClient";
+import {
+  getBlogEntriesByCategory,
+  searchBlogEntries,
+} from "@/lib/blogPostClient";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -8,18 +11,28 @@ import Sidebar from "@/components/Sidebar";
 
 export const dynamicParams = true;
 
-type CategoryPageProps = {
-  params: {
-    slug: string;
+type SearchPageProps = {
+  searchParams?: {
+    term?: string;
+    page?: string;
   };
 };
 
-export default async function Categories(props: CategoryPageProps) {
-  const { params } = props;
-  const posts = await getBlogEntriesByCategory(params.slug);
+const postsPerPage = 25;
+
+export default async function SearchPage(props: SearchPageProps) {
+  const { searchParams } = props;
+  const term = searchParams?.term || "";
+  const currentPage = searchParams?.page ? parseInt(searchParams?.page) : 1;
+
+  const posts = await searchBlogEntries(
+    term,
+    (currentPage - 1) * postsPerPage,
+    postsPerPage
+  );
   return (
     <main>
-      <Typography variant="h3">Category: {decodeURI(params.slug)}</Typography>
+      <Typography variant="h3">Search Term: {term}</Typography>
       <Divider />
       <Grid container spacing={3}>
         <Grid item xs={12} md={8}>

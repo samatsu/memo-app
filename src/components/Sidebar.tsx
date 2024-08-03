@@ -6,30 +6,16 @@ import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
 
-interface SidebarProps {
-  categories: ReadonlyArray<{
-    url: string;
-    title: string;
-  }>;
-  description: string;
-  social: ReadonlyArray<{
-    icon: React.ElementType;
-    name: string;
-  }>;
-  title: string;
-}
+const categories = [
+  { title: "Uncategorized", url: "/categories/uncategorized" },
+  { title: "Windows", url: "/categories/windows" },
+  { title: "Power Automate", url: "/categories/power automate" },
+  { title: "OutSystems", url: "/categories/outsystems" },
+];
 
-export default function Sidebar(props: SidebarProps) {
-  const { categories, description, social, title } = props;
-
+export default function Sidebar() {
   return (
     <aside>
-      <Paper elevation={2} sx={{ p: 2, bgcolor: "grey.100", mb: 2 }}>
-        <Typography variant="h6" gutterBottom>
-          {title}
-        </Typography>
-        <Typography>{description}</Typography>
-      </Paper>
       <Paper elevation={2} sx={{ p: 2 }}>
         <Typography variant="h6">Category</Typography>
         {categories.map((archive) => (

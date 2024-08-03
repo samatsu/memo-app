@@ -1,6 +1,11 @@
+"use client";
+// Referece: https://nextjs.org/learn/dashboard-app/adding-search-and-pagination
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -45,6 +50,20 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchBox() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const handleSearch = useDebouncedCallback((term: string) => {
+    const params = new URLSearchParams(searchParams);
+    if (term) {
+      params.set("term", term);
+    } else {
+      params.delete("term");
+    }
+    params.delete("page");
+    router.replace(`/search?${params.toString()}`);
+  }, 300);
+
   return (
     <Search>
       <SearchIconWrapper>
@@ -53,6 +72,8 @@ export default function SearchBox() {
       <StyledInputBase
         placeholder="Search…"
         inputProps={{ "aria-label": "search" }}
+        onChange={(e) => handleSearch(e.target.value)}
+        defaultValue={searchParams.get("term")}
       />
     </Search>
   );

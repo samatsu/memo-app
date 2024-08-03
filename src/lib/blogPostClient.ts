@@ -26,7 +26,9 @@ export type BlogPostSkelton = BlogPost & {
   contentTypeId: "blogPost";
 };
 
-export const getBlogEntries = async (skip = 0, limit = 25) => {
+export const getBlogEntries = async (skip?: number, limit?: number) => {
+  skip = skip || 0;
+  limit = limit || 25;
   const posts = await client.getEntries<BlogPostSkelton>({
     content_type: "blogPost",
     skip: skip,
@@ -54,10 +56,18 @@ export const getBlogEntriesByCategory = async (category: string) => {
   return posts;
 };
 
-export const searchBlogEntries = async (searchTerm: string) => {
+export const searchBlogEntries = async (
+  searchTerm: string,
+  skip?: number,
+  limit?: number
+) => {
+  skip = skip || 0;
+  limit = limit || 25;
   const posts = await client.getEntries<BlogPostSkelton>({
     content_type: "blogPost",
     query: searchTerm,
+    skip: skip,
+    limit: limit,
   });
   return posts;
 };

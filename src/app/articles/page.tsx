@@ -1,4 +1,4 @@
-import { getBlogEntriesByCategory } from "@/lib/blogPostClient";
+import { getBlogEntries } from "@/lib/blogPostClient";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -14,12 +14,11 @@ type CategoryPageProps = {
   };
 };
 
-export default async function Categories(props: CategoryPageProps) {
-  const { params } = props;
-  const posts = await getBlogEntriesByCategory(params.slug);
+export default async function AllPosts(props: CategoryPageProps) {
+  const posts = await getBlogEntries(0, 10);
   return (
     <main>
-      <Typography variant="h3">Category: {decodeURI(params.slug)}</Typography>
+      <Typography variant="h3">All Posts</Typography>
       <Divider />
       <Grid container spacing={3}>
         <Grid item xs={12} md={8}>
