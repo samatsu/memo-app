@@ -15,8 +15,12 @@ import MenuItem from "@mui/material/MenuItem";
 import SearchBox from "./SearchBox";
 import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
 import { Suspense } from "react";
+import Link from "next/link";
 
-const pages = ["Articles", "Contact"];
+const pages = [
+  { title: "Articles", url: "/articles" },
+  { title: "Contact", url: "/contact" },
+];
 
 export default function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -81,8 +85,10 @@ export default function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.title} onClick={handleCloseNavMenu}>
+                  <Link href={page.url}>
+                    <Typography textAlign="center">{page.title}</Typography>
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -111,11 +117,11 @@ export default function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.title}
+                href={page.url}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {page.title}
               </Button>
             ))}
           </Box>

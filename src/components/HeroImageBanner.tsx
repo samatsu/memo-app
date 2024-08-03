@@ -10,8 +10,9 @@ interface HeroImageBannerProps {
     description: string;
     image: string;
     imageText: string;
-    linkText: string;
     title: string;
+    linkText?: string;
+    linkUrl?: string;
   };
 }
 
@@ -74,9 +75,11 @@ export default function HeroImageBanner(props: HeroImageBannerProps) {
             <Typography variant="h5" color="inherit" sx={{ marginBottom: 2 }}>
               {data.description}
             </Typography>
-            <Link variant="subtitle1" href="#">
-              {data.linkText}
-            </Link>
+            {data.linkUrl && (
+              <Link variant="subtitle1" href={data.linkUrl}>
+                {data.linkText}
+              </Link>
+            )}
           </Box>
         </Grid>
       </Grid>
