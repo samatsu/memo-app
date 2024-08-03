@@ -4,6 +4,8 @@ import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import Chip from "@mui/material/Chip";
+import Box from "@mui/material/Box";
 import { BlogPost } from "@/lib/blogPostClient";
 
 interface BlogPostSummaryProps {
@@ -50,12 +52,12 @@ export default function BlogPostSummary(props: BlogPostSummaryProps) {
           >
             {new Date(fields.publishDate).toLocaleDateString()}
           </Typography>
-          <Typography variant="subtitle1" sx={{ marginBottom: 2 }}>
+          <Typography variant="subtitle1" sx={{ marginBottom: 1 }}>
             {fields.summary}
           </Typography>
-          <Typography variant="subtitle1" sx={{ marginBottom: 2 }}>
-            Category: {fields.category}
-          </Typography>
+          <Box sx={{ marginBottom: 1 }}>
+            <Chip label={fields.category} color="secondary" />
+          </Box>
           <Button variant="contained" color="primary">
             Read more
           </Button>

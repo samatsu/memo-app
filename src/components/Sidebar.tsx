@@ -16,21 +16,19 @@ const categories = [
 export default function Sidebar() {
   return (
     <aside>
-      <Paper elevation={2} sx={{ p: 2 }}>
-        <Typography variant="h6">Category</Typography>
-        {categories.map((archive) => (
-          <Link
-            variant="body1"
-            href={archive.url}
-            key={archive.title}
-            sx={{
-              display: "block",
-            }}
-          >
-            {archive.title}
-          </Link>
-        ))}
-      </Paper>
+      <Typography variant="h6">Category</Typography>
+      {categories.map((archive) => (
+        <Link
+          variant="body1"
+          href={archive.url}
+          key={archive.title}
+          sx={{
+            display: "block",
+          }}
+        >
+          {archive.title}
+        </Link>
+      ))}
       {/* <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
         Social
       </Typography>

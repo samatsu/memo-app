@@ -17,7 +17,7 @@ export default async function LatestPostList() {
         <BlogPostSummary key={post.fields.slug} post={post} />
       ))}
       <Box textAlign="center">
-        <Button color="secondary" href="/articles" variant="contained">
+        <Button color="primary" href="/articles" variant="contained">
           Show All Posts
         </Button>
       </Box>
