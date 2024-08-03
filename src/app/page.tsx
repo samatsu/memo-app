@@ -23,16 +23,16 @@ const sections = [
 //  image: "https://picsum.photos/1100/350",
 
 const mainFeaturedPost = {
-  title: "Yet Another Net planet-es V3",
-  description: "Contentful + Next.js で構築したテストさいとです。",
+  title: "Net planet-es β版",
+  description: "自分がいった旅行先のスポット情報などを紹介予定のサイトです。",
   image: "/imgs/TopHero.jpg",
   imageText: "main image description",
 };
 
 const sidebar = {
-  title: "Under Construction",
+  title: "お知らせ",
   description:
-    "このサイトは作成中です。なにかありましたらのページからお知らせください。",
+    "このサイトは作成中です。Contentful+Next.js+Material UIでテスト実装したサイトです。なにかありましたらのお問い合わせページからお知らせください。",
   // categories: [
   //   { title: "Uncategorized", url: "/categories/uncategorized" },
   //   { title: "Windows", url: "/categories/windows" },

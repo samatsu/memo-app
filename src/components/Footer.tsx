@@ -12,7 +12,7 @@ function Copyright() {
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
         Net Planetes V3
-      </Link>{" "}
+      </Link>
       {new Date().getFullYear()}
       {"."}
     </Typography>
@@ -38,9 +38,13 @@ export default function Footer(props: FooterProps) {
               </Typography>
               <Divider />
               <Typography component="div" gutterBottom>
-                このサイトではプログラミングのサンプルコードやツール、ソフトウェア開発において役に立ちそうな技術的な情報などを掲載しています。
-                サイトオリジナルのソースに関して著作権はサイト管理者が保持します。
-                ただし、特に断りがない限り、ソースプログラムを自由に参照、改変してご利用いただけます。
+                Headless
+                CMSを使用したサイトの構築を体験したくて突貫で作成したサイトです。
+                CMSにContentful, フロントエンドに Next.js,
+                UIコンポーネントにMaterial
+                UI、メール送信にResendを使用させてもらっています。
+                有償のデザインテンプレートは使用していないのでページデザインはシンプルです。
+                ツーリングや旅行先の情報など趣味に関する情報を投稿していこうと考えています。
               </Typography>
             </Grid>
             <Grid item xs={12} md={6}>
@@ -51,6 +55,21 @@ export default function Footer(props: FooterProps) {
               <Typography component="div" gutterBottom>
                 サイトを構築する上でお世話になっているテクノロジーや画像のサイト
               </Typography>
+              <Link href="https://nextjs.org/" color="#ecf0f1">
+                Next.js
+              </Link>
+              /
+              <Link href="https://mui.com/material-ui/" color="#ecf0f1">
+                Material UI
+              </Link>
+              /
+              <Link href="https://www.contentful.com/" color="#ecf0f1">
+                Contentful
+              </Link>
+              /
+              <Link href="https://resend.com/" color="#ecf0f1">
+                Resend
+              </Link>
             </Grid>
           </Grid>
         </Container>
