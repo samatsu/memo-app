@@ -10,18 +10,32 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import { useFormState } from "react-dom";
 import { sendMessage } from "@/lib/EmailAction";
+import Snackbar, { SnackbarOrigin } from "@mui/material/Snackbar";
+import { useRouter } from "next/navigation";
 
 const initialState = {
   errors: {},
   message: null,
+  success: false,
 };
 
 const ContactPage = () => {
   // @ts-ignore
   const [state, formAction] = useFormState(sendMessage, initialState);
-
+  const router = useRouter();
+  const handleClose = () => {
+    router.push("/");
+  };
   return (
     <>
+      <Snackbar
+        open={state.success}
+        message={state.message}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        color="success"
+        autoHideDuration={5000}
+        onClose={handleClose}
+      />
       <Typography variant="h3" component="h3">
         Contact Us
       </Typography>

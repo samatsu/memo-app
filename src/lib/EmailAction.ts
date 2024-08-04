@@ -14,6 +14,7 @@ export type MessageState = {
     comment?: string[];
   };
   message?: string | null;
+  success?: boolean;
 };
 export async function sendMessage(prevState: MessageState, formData: FormData) {
   const name = formData.get("name")?.toString();
@@ -36,7 +37,12 @@ export async function sendMessage(prevState: MessageState, formData: FormData) {
     return {
       errors: {},
       message: error.message,
+      success: false,
     };
   }
-  redirect("/");
+  return {
+    errors: {},
+    message: "Your message was posted successfully",
+    success: true,
+  };
 }

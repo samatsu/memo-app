@@ -7,19 +7,6 @@ import HeroImageBanner from "@/components/HeroImageBanner";
 import LatestPostList from "@/components/LatestPostList";
 import SideNote from "@/components/SideNote";
 
-const sections = [
-  { title: "Technology", url: "#" },
-  { title: "Design", url: "#" },
-  { title: "Culture", url: "#" },
-  { title: "Business", url: "#" },
-  { title: "Politics", url: "#" },
-  { title: "Opinion", url: "#" },
-  { title: "Science", url: "#" },
-  { title: "Health", url: "#" },
-  { title: "Style", url: "#" },
-  { title: "Travel", url: "#" },
-];
-
 //  image: "https://picsum.photos/1100/350",
 
 const mainFeaturedPost = {

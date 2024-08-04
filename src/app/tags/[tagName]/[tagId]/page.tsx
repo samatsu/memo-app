@@ -1,4 +1,4 @@
-import { getBlogEntriesByCategory } from "@/lib/blogPostClient";
+import { getBlogEntriesByTag } from "@/lib/blogPostClient";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -8,19 +8,20 @@ import Sidebar from "@/components/Sidebar";
 
 export const dynamicParams = true;
 
-type CategoryPageProps = {
+type TagPageProps = {
   params: {
-    slug: string;
+    tagName: string;
+    tagId: string;
   };
 };
 
-export default async function Categories(props: CategoryPageProps) {
+export default async function Tags(props: TagPageProps) {
   const { params } = props;
-  const categoryName = decodeURI(params.slug);
-  const posts = await getBlogEntriesByCategory(categoryName);
+  const tagName = decodeURI(params.tagName);
+  const posts = await getBlogEntriesByTag(params.tagId);
   return (
     <main>
-      <Typography variant="h3">Category: {categoryName}</Typography>
+      <Typography variant="h3">Tag: {tagName}</Typography>
       <Divider />
       <Grid container spacing={3}>
         <Grid item xs={12} md={8}>

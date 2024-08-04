@@ -5,12 +5,13 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Divider from "@mui/material/Divider";
+import SideTags from "./SideTags";
 
 const categories = [
-  { title: "Uncategorized", url: "/categories/uncategorized" },
-  { title: "Windows", url: "/categories/windows" },
-  { title: "Power Automate", url: "/categories/power automate" },
-  { title: "OutSystems", url: "/categories/outsystems" },
+  { title: "未分類", url: "/categories/未分類" },
+  { title: "観光地", url: "/categories/観光地" },
+  { title: "ツーリングスポット", url: "/categories/ツーリングスポット" },
+  { title: "食事", url: "/categories/食事" },
 ];
 
 export default function Sidebar() {
@@ -29,6 +30,7 @@ export default function Sidebar() {
           {archive.title}
         </Link>
       ))}
+      <SideTags />
       {/* <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
         Social
       </Typography>

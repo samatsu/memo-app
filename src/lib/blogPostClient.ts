@@ -56,6 +56,20 @@ export const getBlogEntriesByCategory = async (category: string) => {
   return posts;
 };
 
+export const getBlogEntriesByTag = async (tagid: string) => {
+  const posts = await client.getEntries<BlogPostSkelton>({
+    content_type: "blogPost",
+    // @ts-ignore
+    "metadata.tags.sys.id[in]": tagid,
+  });
+  return posts;
+};
+
+export const getAllPublicTags = async () => {
+  const tags = await client.getTags();
+  return tags;
+};
+
 export const searchBlogEntries = async (
   searchTerm: string,
   skip?: number,
