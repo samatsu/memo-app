@@ -10,8 +10,8 @@ function Copyright() {
   return (
     <Typography variant="body2" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Net Planetes V3
+      <Link color="inherit" href="https://memo-app-psi.vercel.app/">
+        Net Planetes V3 Beta
       </Link>
       {new Date().getFullYear()}
       {"."}
