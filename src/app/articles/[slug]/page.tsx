@@ -7,7 +7,8 @@ import {
   documentToReactComponents,
   Options,
 } from "@contentful/rich-text-react-renderer";
-import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES, MARKS, Text } from "@contentful/rich-text-types";
+import { type } from "os";
 
 export const dynamicParams = true;
 
@@ -63,7 +64,7 @@ const renderOptions: Options = {
     [BLOCKS.PARAGRAPH]: (node, children) => {
       if (
         node.content.length === 1 &&
-        node.content[0].marks.find((x) => x.type === "code")
+        (node.content[0] as Text)?.marks.find((x) => x.type === "code")
       ) {
         return <div>{children}</div>;
       }
