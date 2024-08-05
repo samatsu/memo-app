@@ -1,11 +1,13 @@
 // Route Segment Config: https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#dynamicparams
 import { getBlogEntryBySlug } from "@/lib/blogPostClient";
 import { notFound } from "next/navigation";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { vs2015 } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import {
   documentToReactComponents,
   Options,
 } from "@contentful/rich-text-react-renderer";
-import { BLOCKS, INLINES } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 
 export const dynamicParams = true;
 
@@ -56,6 +58,40 @@ const renderOptions: Options = {
           width={node.data.target.fields.file.details.image.width}
           alt={node.data.target.fields.description}
         />
+      );
+    },
+    [BLOCKS.PARAGRAPH]: (node, children) => {
+      if (
+        node.content.length === 1 &&
+        node.content[0].marks.find((x) => x.type === "code")
+      ) {
+        return <div>{children}</div>;
+      }
+      return <p>{children}</p>;
+    },
+  },
+  renderMark: {
+    [MARKS.CODE]: (text: React.ReactNode) => {
+      const regex = /^lang:(\w+)/;
+      const codeSnippet = (text as string) || "";
+      // If the code snippet doesn't have the expected metadata
+      if (!regex.test(codeSnippet)) {
+        return <code>{codeSnippet}</code>;
+      }
+      // Extract the language
+      const matches = regex.exec(codeSnippet);
+      const language = matches && matches?.length > 2 ? matches[1] : "";
+
+      // Remove the first line to avoid including metadata in the rendered version
+      return (
+        <SyntaxHighlighter
+          language={language}
+          style={vs2015}
+          className="rounded-md text-sm"
+          showLineNumbers
+        >
+          {codeSnippet.split("\n").slice(1).join("\n")}
+        </SyntaxHighlighter>
       );
     },
   },
